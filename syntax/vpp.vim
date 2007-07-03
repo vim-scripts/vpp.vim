@@ -1,9 +1,9 @@
 " Vim syntax file
 " Language:     VDM++
 " Maintainer:   Rui Carlos Goncalves <rui.c.mcc@gmail.com>
-" Last Change:  June 13, 2007
+" Last Change:  July 3, 2007
 "
-" Version:      0.9
+" Version:      0.10
 " Url:          http://www.rcg-pt.net/prog/vpp.vim
 if version < 600
   syn clear
@@ -25,7 +25,7 @@ syn keyword     vppStatement    cases others
 syn keyword     vppStatement    pre post inv 
 syn keyword     vppStatement    compose
 syn keyword     vppStatement    state init
-syn keyword     vppStatement    forall exits exists1 iota
+syn keyword     vppStatement    forall exists exists1 iota
 syn keyword     vppStatement    lambda
 syn keyword     vppStatement    undefined skip
 syn keyword     vppStatement    dcl
