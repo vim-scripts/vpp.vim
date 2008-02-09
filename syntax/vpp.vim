@@ -1,10 +1,11 @@
 " Vim syntax file
 " Language:     VDM++
-" Maintainer:   Rui Carlos Goncalves <rui.c.mcc@gmail.com>
-" Last Change:  July 3, 2007
+" Maintainer:   Rui Carlos A. Goncalves <rcgoncalves.pt@gmail.com>
+" Last Change:  July 20, 2007
 "
-" Version:      0.10
-" Url:          http://www.rcg-pt.net/prog/vpp.vim
+" Version:      1.0
+" Url:          http://www.rcg-pt.net/programacao/vpp.vim.gz
+
 if version < 600
   syn clear
 elseif exists("b:current_syntax")
@@ -15,16 +16,15 @@ endif
 syn case match
 
 " Keywords
-syn keyword     vppPart         exports imports definitions types functions operations values from renamed uselib struct
+syn keyword     vppPart         types functions operations values from
 syn keyword     vppType         bool int nat nat1 real rat char token
 syn keyword     vppBool         true false
 syn keyword     vppConstant     nil
 syn keyword     vppConditional  if then else elseif
 syn keyword     vppStatement    let def be st
-syn keyword     vppStatement    cases others 
+syn keyword     vppStatement    cases others
 syn keyword     vppStatement    pre post inv 
 syn keyword     vppStatement    compose
-syn keyword     vppStatement    state init
 syn keyword     vppStatement    forall exists exists1 iota
 syn keyword     vppStatement    lambda
 syn keyword     vppStatement    undefined skip
@@ -62,12 +62,8 @@ syn match       vppCharacter    "[^a-zA-Z0-9_']'\([^\\]\|\\[^']\+\|\\'\)'"lc=1 c
 syn match       vppCharacter    "^'\([^\\]\|\\[^']\+\|\\'\)'" contains=vppSpecialChar
 syn region      vppString       start=+"+ skip=+\\\\\|\\"+ end=+"+ contains=vppSpecialChar
 
-syn sync match  vppStrSyncSkip  +\\\\\|\\"+
-syn sync match  vppStringSync   grouphere       vppString       +"+
-syn sync match  vppStringSync   groupthere      NONE            +"+
-
 " Other types
-syn match       vppType         "\<\(set\|seq\|seq1\) of\>"
+syn match       vppType         "\<\(set\|seq\|seq1\) *of\>"
 syn region      vppNormalMap1   matchgroup=vppType start="\<\(map\|inmap\)\>" end="\<to\>" contains=vppType,vppNormalMap2,vppStatement,vppOperator,vppConstant
 syn region      vppNormalMap2   matchgroup=vppType start="\<\(map\|inmap\)\>" end="\<to\>" contains=vppType,vppNormalMap1,vppStatement,vppOperator,vppConstant contained
 
@@ -75,30 +71,29 @@ syn region      vppNormalMap2   matchgroup=vppType start="\<\(map\|inmap\)\>" en
 syn match       vppStatement    "\<end\>"
 syn match       vppStatement    "\<of\>"
 syn match       vppStatement    "\<in\>"
-syn match       vppStatement    "\<is not yet specified\>"
-syn match       vppStatement    "\<is subclass responsibility\>"
+syn match       vppStatement    "\<is *not *yet *specified\>"
+syn match       vppStatement    "\<is *subclass *responsibility\>"
 syn match       vppStatement    "\<to\>"
-syn match       vppStatement    "\<\(for all\|for\)\>"
+syn match       vppStatement    "\<\(for *all\|for\)\>"
 syn match       vppStatement    "\<mutex\>"
-"syn match       vppStatement    "\<mutex *( *all *)\>"  !!!!
+syn match       vppStatement    "\<match\>"
+syn match       vppStatement    "\<all\>"
 
 " Other functions
-syn match       vppFunction     "\<in set\>"
+syn match       vppFunction     "\<in *set\>"
 syn match       vppFunction     "\<\(mk_[a-zA-Z][a-zA-Z0-9_'`]*\|mk_\)\>"
 syn match       vppFunction     "\<\(is_[a-zA-Z][a-zA-Z0-9_']*\|is_\)\>"
 syn match       vppFunction     "\<init_[a-zA-Z][a-zA-Z0-9_']*\>"
 syn match       vppFunction     "\<inv_[a-zA-Z][a-zA-Z0-9_']*\>"
 syn match       vppFunction     "\<pre_[a-zA-Z][a-zA-Z0-9_']*\>"
 syn match       vppFunction     "\<post_[a-zA-Z][a-zA-Z0-9_']*\>"
-"syn match       vppFunction     "\<\(#act\|#fin\|#active\|#req\|#waiting\)\>"   !!!!
+syn match       vppFunction     "\(#act\|#fin\|#active\|#req\|#waiting\)\>"
 
 " Others
-syn match       vppPart         "\<all\>"
 syn match       vppPart         "\<class\>"
-syn match       vppPart         "\<instance variables"
-syn match       vppPart         "\<is\ subclass\ of\>"
-syn match       vppPart         "\<end[\ \r\n]*[a-zA-Z][a-zA-Z0-9_']*[\ \r\n]*module\>"he=s+3,me=e-6
-syn match       vppPart         "\<end[\ \r\n]*[a-zA-Z][a-zA-Z0-9_']*[\ \r\n]*dlmodule\>"he=s+3,me=e-8
+syn match       vppPart         "\<instance *variables"
+syn match       vppPart         "\<is *subclass *of\>"
+syn match       vppPart         "\<end[\ \r\n]*[a-zA-Z][a-zA-Z0-9_']*[\ \r\n]*class\>"he=s+3,me=e-5
 syn match       vppPart         "\<end[\ \r\n]*[a-zA-Z][a-zA-Z0-9_']*[\ \r\n]*\%$"he=s+3
 
 " Comments
