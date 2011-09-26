@@ -4,7 +4,7 @@
 " Last Change:  July 20, 2007
 "
 " Version:      1.0
-" Url:          http://www.rcg-pt.net/programacao/vpp.vim.gz
+" Url:          http://rcgoncalves.net/files/vpp.zip
 
 if version < 600
   syn clear
